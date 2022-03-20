@@ -14,7 +14,7 @@ $result=mysqli_query($mysql," SELECT * FROM registrations ORDER by id DESC");
 <link rel="stylesheet" href="style.css">
 
 <body>
-    <form name="form1"action = "function.php" method="POST">
+    <form action = "function.php" method="POST">
         <div class="container">
             <h1>Create Account</h1>
 
@@ -24,11 +24,11 @@ $result=mysqli_query($mysql," SELECT * FROM registrations ORDER by id DESC");
             <input type="text" placeholder="Enter Name" name="name" id="name"  required>
        
            
-            <input type="email" placeholder="Enter Email(username@iitk.ac.in)" name="email" id="email" pattern:".+@iitk.ac.in" required>
+            <input type="email" placeholder="Enter Email(username@iitk.ac.in)" name="email" id="email" pattern=".+@iitk.ac.in" required>
           
 
             
-            <input type="text" placeholder="Enter Mobile no." name="mobile" id="mobile" required>
+            <input  type="text" placeholder="Enter Mobile no." name="mobile" id="mobile" pattern="[789][0-9]{9}" required>
         
             
             <input type="text" placeholder="Enter Address" name="address" id="address" required>
@@ -67,7 +67,26 @@ $result=mysqli_query($mysql," SELECT * FROM registrations ORDER by id DESC");
 
     
 
-<script src="index.js"></script>  
+<script type ="text/javascript">
+console.log("hiii");
+
+function validate()
+{
+    var text = document.getElementById("mobile").ariaValueMax;
+    console.log("in funct");
+    var regx = /^\d{10}$/;
+    if(regx.test(text))
+    {
+        console.log("correct");
+    }
+    else{
+        document.getElementById("submit").style.visibility="invisible";
+        alert("incorrect mobile number");
+    }
+}
+
+
+</script>  
 </body>
 
 </html>
